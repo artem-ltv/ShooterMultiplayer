@@ -33,7 +33,7 @@ namespace ShooterMuliplayer
         {
             if (_photonView.IsMine)
             {
-                GameObject newBullet = PhotonNetwork.Instantiate(_bullet.gameObject.name, _shotPoint.position, transform.rotation);
+                PhotonNetwork.Instantiate(_bullet.gameObject.name, _shotPoint.position, transform.rotation);
             }
         }
     }

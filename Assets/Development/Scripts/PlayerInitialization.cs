@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,21 +8,40 @@ namespace ShooterMuliplayer
     {
         [SerializeField] private FixedJoystick _joystick;
         [SerializeField] private Button _shotButton;
+        [SerializeField] private TMP_Text _healthText;
 
-        public void InitializePlayerInput(GameObject player)
+        private GameObject _player;
+
+        public void Initialize(GameObject player)
         {
-            if (player.TryGetComponent(out PlayerInput playerInput))
+            _player = player;
+            InitializeJoystick();
+            InitializeGun();
+            InitializeHealthText();
+        }
+
+        private void InitializeJoystick()
+        {
+            if (_player.TryGetComponent(out PlayerInput playerInput))
             {
                 playerInput.Initialize(_joystick);
             }
         }
 
-        public void InitializePlayerGun(GameObject player)
+        private void InitializeGun()
         {
-            Gun gun = player.GetComponentInChildren<Gun>();
+            Gun gun = _player.GetComponentInChildren<Gun>();
             if (gun != null)
             {
                 gun.Initialize(_shotButton);
+            }
+        }
+
+        private void InitializeHealthText()
+        {
+            if (_player.TryGetComponent(out PlayerHealth playerHealth))
+            {
+                playerHealth.Initialize(_healthText);
             }
         }
     }

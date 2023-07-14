@@ -21,8 +21,7 @@ namespace ShooterMuliplayer
         {
             Vector2 randomSpawnPoint = new Vector2(Random.Range(_minX, _maxX), Random.Range(_minY, _maxY));
             GameObject newPlayer = PhotonNetwork.Instantiate(_player.gameObject.name, randomSpawnPoint, Quaternion.identity);
-            _playerInitialization.InitializePlayerInput(newPlayer);
-            _playerInitialization.InitializePlayerGun(newPlayer);
+            _playerInitialization.Initialize(newPlayer);
         }
     }
 }
