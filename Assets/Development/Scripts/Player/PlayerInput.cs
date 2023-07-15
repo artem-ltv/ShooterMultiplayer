@@ -7,7 +7,7 @@ namespace ShooterMuliplayer
     public class PlayerInput : MonoBehaviour
     {
         private PlayerMovement _playerMovement;
-        [SerializeField] private FixedJoystick _fixedJoystick;
+        private FixedJoystick _fixedJoystick;
         private PhotonView _photonView;
 
         private void Start()

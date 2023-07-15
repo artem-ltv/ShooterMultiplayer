@@ -9,6 +9,8 @@ namespace ShooterMuliplayer
     {
         [SerializeField] private TMP_InputField _createRoomInput;
         [SerializeField] private TMP_InputField _joinRoomInput;
+        [SerializeField] private TMP_InputField _nicknameInput;
+
         [SerializeField] private int _maxPlayersInRoom;
 
         public void CreateRoom()
@@ -26,6 +28,12 @@ namespace ShooterMuliplayer
         public override void OnJoinedRoom()
         {
             PhotonNetwork.LoadLevel(2);
+        }
+
+        public void SetNickname(string nickname)
+        {
+            PhotonNetwork.NickName = nickname;
+            Debug.Log(nickname);
         }
     }
 }

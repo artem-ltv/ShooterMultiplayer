@@ -1,27 +1,33 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.Events;
+using Photon.Pun;
 
 namespace ShooterMuliplayer
 {
+    [RequireComponent(typeof(PhotonView))]
     public class PlayerHealth : MonoBehaviour
     {
+        public UnityAction Dying;
+
         [SerializeField] private int _health;
+        [SerializeField] private TMP_Text _healthText;
 
-        private TMP_Text _healthText;
-        private float _offsetY = 1f;
+        private PhotonView _photonView;
+        private float _healthTextOffsetY = 1.25f;
 
-        private void Update()
+        private void Start()
         {
-            if(_healthText != null)
+            _photonView = GetComponent<PhotonView>();
+            if (_photonView.IsMine)
             {
-                _healthText.transform.position = new Vector3(transform.position.x, transform.position.y + _offsetY, transform.position.z);
+                _healthText.enabled = false;
             }
         }
 
-        public void Initialize(TMP_Text healthText)
+        private void Update()
         {
-            _healthText = healthText;
-            UpdateHealthText();
+            _healthText.transform.position = new Vector3(transform.position.x, transform.position.y + _healthTextOffsetY, transform.position.z);
         }
 
         public void AddDamage(int damage)
@@ -46,7 +52,7 @@ namespace ShooterMuliplayer
 
         private void Die()
         {
-            //
+            Dying?.Invoke();
         }
     }
 }
