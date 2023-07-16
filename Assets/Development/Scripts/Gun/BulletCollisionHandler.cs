@@ -1,3 +1,4 @@
+using Photon.Pun;
 using UnityEngine;
 
 namespace ShooterMuliplayer
@@ -8,7 +9,6 @@ namespace ShooterMuliplayer
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            Debug.Log("Bullet");
             if (collision.gameObject.TryGetComponent(out Player player))
             {
                 if (player.gameObject.TryGetComponent(out PlayerHealth playerHealth))
@@ -16,9 +16,11 @@ namespace ShooterMuliplayer
                     playerHealth.AddDamage(_damage);
                 }
             }
+
+            PhotonNetwork.Destroy(this.gameObject);
         }
 
-        public void SetDamage(int damage)
+        public void Initialize(int damage)
         {
             _damage = damage;
         }

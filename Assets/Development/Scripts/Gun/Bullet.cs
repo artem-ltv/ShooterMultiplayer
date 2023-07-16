@@ -13,7 +13,7 @@ namespace ShooterMuliplayer
         private void Start()
         {
             _collisionHandler = GetComponent<BulletCollisionHandler>();
-            _collisionHandler.SetDamage(_damage);
+            _collisionHandler.Initialize(_damage);
         }
 
         private void Update()

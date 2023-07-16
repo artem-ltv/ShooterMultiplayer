@@ -9,6 +9,7 @@ namespace ShooterMuliplayer
     public class PlayerHealth : MonoBehaviour
     {
         public UnityAction Dying;
+        public UnityAction<int> AddingDamage;
 
         [SerializeField] private int _health;
         [SerializeField] private TMP_Text _healthText;
@@ -33,6 +34,7 @@ namespace ShooterMuliplayer
         public void AddDamage(int damage)
         {
             _health -= damage;
+            AddingDamage?.Invoke(_health);
             UpdateHealthText();
             if (_health <= 0)
             {

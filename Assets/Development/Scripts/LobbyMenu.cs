@@ -9,8 +9,6 @@ namespace ShooterMuliplayer
     {
         [SerializeField] private TMP_InputField _createRoomInput;
         [SerializeField] private TMP_InputField _joinRoomInput;
-        [SerializeField] private TMP_InputField _nicknameInput;
-
         [SerializeField] private int _maxPlayersInRoom;
 
         public void CreateRoom()
