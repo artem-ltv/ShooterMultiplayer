@@ -20,10 +20,10 @@ namespace ShooterMuliplayer
         private void Start()
         {
             _photonView = GetComponent<PhotonView>();
-            if (_photonView.IsMine)
-            {
-                _healthText.enabled = false;
-            }
+            //if (_photonView.IsMine)
+            //{
+            //    _healthText.enabled = false;
+            //}
         }
 
         private void Update()
@@ -34,8 +34,9 @@ namespace ShooterMuliplayer
         public void AddDamage(int damage)
         {
             _health -= damage;
-            AddingDamage?.Invoke(_health);
+            Debug.Log($"I have damage, Health: {_health}");
             UpdateHealthText();
+            AddingDamage?.Invoke(_health);
             if (_health <= 0)
             {
                 Die();

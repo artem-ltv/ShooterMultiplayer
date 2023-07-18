@@ -3,9 +3,17 @@ using UnityEngine;
 
 namespace ShooterMuliplayer
 {
+    [RequireComponent(typeof(PhotonView))]
     public class BulletCollisionHandler : MonoBehaviour
     {
+        private PhotonView _photonView;
         private int _damage;
+        private PlayerHealth _health;
+
+        private void Start()
+        {
+            _photonView = GetComponent<PhotonView>();
+        }
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
@@ -17,12 +25,18 @@ namespace ShooterMuliplayer
                 }
             }
 
-            PhotonNetwork.Destroy(this.gameObject);
+            _photonView.RPC("DestroyBullet", RpcTarget.AllBuffered);
         }
 
         public void Initialize(int damage)
         {
             _damage = damage;
+        }
+
+        [PunRPC]
+        private void DestroyBullet()
+        {
+            gameObject.SetActive(false);
         }
     }
 }

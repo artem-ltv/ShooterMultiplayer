@@ -16,10 +16,15 @@ namespace ShooterMuliplayer
             _rigidbody = GetComponent<Rigidbody2D>();
         }
 
-        private void OnDisable()
-        {
-            _battle.StartingBattle -= AllowMove;
-        }
+        //private void OnDisable()
+        //{
+        //    _battle.StartingBattle -= AllowMove;
+        //}
+
+        //private void OnDestroy()
+        //{
+        //    _battle.StartingBattle -= AllowMove;
+        //}
 
         public void Initialize(Battle battle)
         {

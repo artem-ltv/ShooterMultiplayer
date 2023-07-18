@@ -8,8 +8,8 @@ namespace ShooterMuliplayer
         [SerializeField] private TMP_Text _health;
         [SerializeField] private TMP_Text _coins;
 
-        private PlayerHealth _playerHealth;
-        private Wallet _wallet;
+        [SerializeField] private PlayerHealth _playerHealth;
+        [SerializeField] private Wallet _wallet;
 
         private void OnDisable()
         {

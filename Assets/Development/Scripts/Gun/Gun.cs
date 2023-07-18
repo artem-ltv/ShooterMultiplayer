@@ -20,11 +20,17 @@ namespace ShooterMuliplayer
             _photonView = GetComponent<PhotonView>();
         }
 
-        private void OnDisable()
-        {
-            _shot.onClick.RemoveListener(Shot);
-            _battle.StartingBattle -= AllowShoot;
-        }
+        //private void OnDisable()
+        //{
+        //    _shot.onClick.RemoveListener(Shot);
+        //    _battle.StartingBattle -= AllowShoot;
+        //}
+
+        //private void OnDestroy()
+        //{
+        //    _shot.onClick.RemoveListener(Shot);
+        //    _battle.StartingBattle -= AllowShoot;
+        //}
 
         public void Initialize(Button shot, Battle battle)
         {

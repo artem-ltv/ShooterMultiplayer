@@ -1,4 +1,5 @@
 using Photon.Pun;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace ShooterMuliplayer
@@ -12,10 +13,12 @@ namespace ShooterMuliplayer
             PhotonNetwork.AutomaticallySyncScene = true;
             PhotonNetwork.GameVersion = _gameVersion;
             PhotonNetwork.ConnectUsingSettings();
+            
         }
 
         public override void OnConnectedToMaster()
         {
+            Debug.Log($"Ping: {PhotonNetwork.GetPing()}");
             SceneManager.LoadScene(1);
         }
     }
