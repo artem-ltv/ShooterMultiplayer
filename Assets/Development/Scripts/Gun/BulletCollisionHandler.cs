@@ -8,7 +8,6 @@ namespace ShooterMuliplayer
     {
         private PhotonView _photonView;
         private int _damage;
-        private PlayerHealth _health;
 
         private void Start()
         {

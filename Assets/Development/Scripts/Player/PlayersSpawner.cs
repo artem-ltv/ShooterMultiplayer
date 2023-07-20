@@ -3,20 +3,18 @@ using Photon.Pun;
 
 namespace ShooterMuliplayer
 {
-    [RequireComponent(typeof(PlayerInitialization))]
     [RequireComponent(typeof(PhotonView))]
     public class PlayersSpawner : MonoBehaviour
     {
         [SerializeField] private Player _player;
         [SerializeField] private float _minX, _maxX, _minY, _maxY;
         [SerializeField] private Battle _battle;
+        [SerializeField] private PlayerInitialization _playerInitialization;
 
-        private PlayerInitialization _playerInitialization;
         private PhotonView _photonView;
 
         private void Start()
         {
-            _playerInitialization = GetComponent<PlayerInitialization>();
             _photonView = GetComponent<PhotonView>();
 
             Vector2 randomSpawnPoint = new Vector2(Random.Range(_minX, _maxX), Random.Range(_minY, _maxY));

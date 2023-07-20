@@ -8,7 +8,7 @@ namespace ShooterMuliplayer
     {
         public UnityAction StartingBattle;
 
-        private int _minNumberOfPlayers = 2;
+        [SerializeField] private int _minNumberOfPlayers = 2;
 
         public void TryStartBattle()
         {

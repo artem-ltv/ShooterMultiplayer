@@ -9,16 +9,20 @@ namespace ShooterMuliplayer
         [SerializeField] private Button _shotButton;
         [SerializeField] private Battle _battle;
         [SerializeField] private IndicatorsUI _indicators;
+        [SerializeField] private CameraFollowing _cameraFollowing;
 
         private GameObject _player;
 
         public void Initialize(GameObject player)
         {
             _player = player;
+
             InitializeJoystick();
             InitializeGun();
             InitializeMove();
             InitializeIndicators();
+            InitializeCamera();
+
         }
 
         private void InitializeJoystick()
@@ -53,6 +57,11 @@ namespace ShooterMuliplayer
             {
                 _indicators.Initialize(_playerHealth, wallet);
             }
+        }
+
+        private void InitializeCamera()
+        {
+            _cameraFollowing.Initialize(_player.transform);
         }
     }
 }
