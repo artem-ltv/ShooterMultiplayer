@@ -13,7 +13,6 @@ namespace ShooterMuliplayer
             PhotonNetwork.AutomaticallySyncScene = true;
             PhotonNetwork.GameVersion = _gameVersion;
             PhotonNetwork.ConnectUsingSettings();
-            
         }
 
         public override void OnConnectedToMaster()
