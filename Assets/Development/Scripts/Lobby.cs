@@ -15,10 +15,18 @@ namespace ShooterMuliplayer
 
         private int _maxPlayersInRoom = 2;
 
-        private void Start()
+        public override void OnEnable()
         {
+            base.OnEnable();
             _createRoom.Add(CreateRoom);
             _joinRoom.Add(JoinRoom);
+        }
+
+        public override void OnDisable()
+        {
+            base.OnDisable();
+            _createRoom.Remove(CreateRoom);
+            _joinRoom.Remove(JoinRoom);
         }
 
         private void CreateRoom()
