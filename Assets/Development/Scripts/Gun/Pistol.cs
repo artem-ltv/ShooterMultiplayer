@@ -1,17 +1,26 @@
+using System.Collections;
 using UnityEngine;
 
 namespace ShooterMuliplayer
 {
     public class Pistol : Gun
     {
-        protected override void Reload(float reloadingTime)
+        protected override IEnumerator Reload(float reloadingTime)
         {
-            throw new System.NotImplementedException();
+            SetShootAbility(false);
+
+            yield return new WaitForSeconds(reloadingTime);
+            
+            CountPatrons = MaxCountPatrons;
+            SetShootAbility(true);
         }
 
-        public override void Shot()
+        protected override void Shot()
         {
-            Debug.Log("Shot");
+            Bullet newBullet = Instantiate(Bullet, ShootPoint.position, transform.rotation);
+
+            newBullet.Init(Damage);
+            newBullet.transform.SetParent(null);
         }
     }
 }

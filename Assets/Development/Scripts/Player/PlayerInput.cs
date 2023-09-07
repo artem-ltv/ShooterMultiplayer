@@ -12,15 +12,8 @@ namespace ShooterMuliplayer
 
         private void Update()
         {
-            if (_movement.CanMove)
-            {
-                ControlMovement();
-            }
-
-            if (_gun.CanShoot)
-            {
-                ControlShooting();
-            }
+            ControlMovement();
+            ControlShooting();
         }
 
         private void ControlMovement()
@@ -29,14 +22,14 @@ namespace ShooterMuliplayer
             float vertical = Input.GetAxis(_verticalText);
 
             Vector3 direction = new(horizontal, vertical, 0f);
-            _movement.Move(direction);
+            _movement.TryMove(direction);
         }
 
         private void ControlShooting()
         {
             if (Input.GetMouseButtonDown(0))
             {
-                _gun.Shot();
+                _gun.TryShot();
             }
         }
     }

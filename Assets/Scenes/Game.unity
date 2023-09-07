@@ -123,6 +123,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &135506765
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 135506766}
+  m_Layer: 0
+  m_Name: ShotPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &135506766
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135506765}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.26, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 387460101}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &301712096
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,7 +250,7 @@ GameObject:
   - component: {fileID: 387460100}
   - component: {fileID: 387460102}
   m_Layer: 0
-  m_Name: Circle
+  m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -290,6 +321,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1857535726}
+  - {fileID: 135506766}
   m_Father: {fileID: 1535218888}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -305,7 +337,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4b4b97c1f4c2a5479bff085f3cf4ce8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ReloadingTime: 0
+  ShootPoint: {fileID: 135506766}
+  Bullet: {fileID: 7475499150664467766, guid: bdadbecb5c43cee4ab35c6f108006367, type: 3}
+  Damage: 37
+  ReloadingTime: 2
+  MaxCountPatrons: 5
 --- !u!1 &1535218884
 GameObject:
   m_ObjectHideFlags: 0
@@ -351,8 +387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20d8659893d466d409c62657e92e7d32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 15
-  _rotationSpeed: 0
+  _moveSpeed: 7
 --- !u!212 &1535218887
 SpriteRenderer:
   m_ObjectHideFlags: 0

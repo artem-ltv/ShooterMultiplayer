@@ -1,19 +1,32 @@
+using System.Collections;
 using UnityEngine;
 
 namespace ShooterMuliplayer
 {
     public abstract class Gun : MonoBehaviour
     {
-        public bool CanShoot => _canShoot;
-
+        [SerializeField] protected Transform ShootPoint;
+        [SerializeField] protected Bullet Bullet;
+        [SerializeField] protected int Damage;
         [SerializeField] protected float ReloadingTime;
+        [SerializeField] protected int MaxCountPatrons;
 
-        private Camera _camera;
+        protected int CountPatrons;
+        protected bool CanShoot;
 
         private float _offsetZ = -90f;
-        private bool _canShoot = true;
+        private Camera _camera;
 
-        private void Start() => _camera = Camera.main;
+        private void Start()
+        {
+            _camera = Camera.main;
+            CountPatrons = MaxCountPatrons;
+
+            if(CountPatrons > 0)
+            {
+                SetShootAbility(true);
+            }
+        }
         
         private void Update()
         {
@@ -22,8 +35,27 @@ namespace ShooterMuliplayer
             transform.rotation = Quaternion.Euler(0f, 0f, rotateZ + _offsetZ);
         }
 
-        public abstract void Shot();
+        public virtual void TryShot()
+        {
+            if (CanShoot)
+            {
+                Shot();
+                CountPatrons--;
 
-        protected abstract void Reload(float reloadingTime);
+                if(CountPatrons <= 0)
+                {
+                    StartCoroutine(Reload(ReloadingTime));
+                }
+            }
+        }
+        
+        public void SetShootAbility(bool isShootAbility)
+        {
+            CanShoot = isShootAbility;
+        }
+
+        protected abstract void Shot();
+
+        protected abstract IEnumerator Reload(float reloadingTime);
     }
 }
