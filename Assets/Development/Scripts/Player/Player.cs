@@ -6,6 +6,9 @@ namespace ShooterMuliplayer
     public class Player : MonoBehaviour
     {
         public UnityAction Dying;
+        public UnityAction<int> HealthChanged;
+
+        public int Health => _health;
 
         [SerializeField] private int _health;
 
@@ -14,6 +17,8 @@ namespace ShooterMuliplayer
             if(damage > 0)
             {
                 _health -= damage;
+
+                HealthChanged?.Invoke(_health);
 
                 if(_health <= 0)
                 {
