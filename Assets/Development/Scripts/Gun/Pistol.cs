@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using Photon.Pun;
 
 namespace ShooterMuliplayer
 {
@@ -17,8 +18,9 @@ namespace ShooterMuliplayer
 
         protected override void Shot()
         {
-            Bullet newBullet = Instantiate(Bullet, ShootPoint.position, transform.rotation);
+            GameObject newBulletObject = PhotonNetwork.Instantiate(Bullet.name, ShootPoint.position, transform.rotation);
 
+            Bullet newBullet = newBulletObject.GetComponent<Bullet>();
             newBullet.Init(Damage);
             newBullet.transform.SetParent(null);
         }

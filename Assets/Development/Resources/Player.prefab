@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8652887081069178602}
   - component: {fileID: 8652887081069178603}
   - component: {fileID: 8652887081069178601}
+  - component: {fileID: 8652887081320301297}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -99,11 +100,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4b4b97c1f4c2a5479bff085f3cf4ce8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _photonView: {fileID: 8652887081320301297}
   ShootPoint: {fileID: 8652887081187174817}
   Bullet: {fileID: 7475499150664467766, guid: bdadbecb5c43cee4ab35c6f108006367, type: 3}
   Damage: 37
   ReloadingTime: 2
   MaxCountPatrons: 5
+--- !u!114 &8652887081320301297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8652887081069178604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &8652887081187174818
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,6 +274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50dff0f533b00864fb6f2cba9fa63e51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _photonView: {fileID: 8652887081932576292}
   _movement: {fileID: 8652887081932576297}
   _gun: {fileID: 8652887081069178601}
 --- !u!114 &8652887081932576294

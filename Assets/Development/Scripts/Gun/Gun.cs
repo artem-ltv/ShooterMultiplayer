@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using UnityEngine;
 
@@ -5,6 +6,7 @@ namespace ShooterMuliplayer
 {
     public abstract class Gun : MonoBehaviour
     {
+        [SerializeField] private PhotonView _photonView;
         [SerializeField] protected Transform ShootPoint;
         [SerializeField] protected Bullet Bullet;
         [SerializeField] protected int Damage;
@@ -37,6 +39,11 @@ namespace ShooterMuliplayer
 
         public virtual void TryShot()
         {
+            if (!_photonView.IsMine)
+            {
+                return;
+            }
+
             if (CanShoot)
             {
                 Shot();

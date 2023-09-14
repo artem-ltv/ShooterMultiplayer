@@ -1,9 +1,11 @@
 using UnityEngine;
+using Photon.Pun;
 
 namespace ShooterMuliplayer
 {
     public class PlayerInput : MonoBehaviour
     {
+        [SerializeField] private PhotonView _photonView; 
         [SerializeField] private PlayerMovement _movement;
         [SerializeField] private Gun _gun;
 
@@ -12,8 +14,11 @@ namespace ShooterMuliplayer
 
         private void Update()
         {
-            ControlMovement();
-            ControlShooting();
+            if (_photonView.IsMine)
+            {
+                ControlMovement();
+                ControlShooting();
+            }
         }
 
         private void ControlMovement()
